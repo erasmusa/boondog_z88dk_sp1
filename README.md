@@ -1,6 +1,6 @@
 # Boondog Z88DK & SP1
 
-This is a ZX Spectrum remake of the free Windows game Boondog done with z88dk + sp1 for the zx spectrum.
+This is a ZX Spectrum remake of the free Windows game [Boondog](https://boondog.en.uptodown.com/windows) done with z88dk + sp1 for the zx spectrum.
 
 # To build this for Windows
 
@@ -16,9 +16,9 @@ Simply run `make` or `make z88dk-breakout` to build the game. The resulting `.ta
 [Z88DK Docker Usage Reference Material](https://github.com/z88dk/z88dk/wiki/Docker-Usage)
 
 # References
-z88dk_sp1_breakout
+[z88dk_sp1_breakout](https://github.com/antoniocmateus/z88dk_sp1_breakout)
 z88dk forums
 World of Spectrum forums
 
 # Kudos
-Antonio Mateus for his well documented z88dk_sp1_breakout game source code.
+Antonio Mateus for his well documented [z88dk_sp1_breakout](https://github.com/antoniocmateus/z88dk_sp1_breakout) game source code.
