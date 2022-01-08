@@ -40,24 +40,24 @@ SDCC4  = -startup=4 -clib=sdcc_iy # 64 column mode
 SDCC31 = -startup=31 -DWFRAMES=3 -clib=sdcc_iy # Most minimal one with no IO channels enabled
 
 
-GAME = z88dk-breakout
+GAME = z88dk-boondog
 
 TAPE = $(GAME:%=%.tap)
 
 all: $(TAPE)
 
-# The line below allows you to type `make z88dk-breakout` and it would automatically build the z88dk-breakout.tap recipe.
+# The line below allows you to type `make z88dk-boondog` and it would automatically build the z88dk-boondog.tap recipe.
 $(GAME): %: %.tap
 
-z88dk-breakout.tap: src/$(*:%.c,%.h) gfx/$(*:%.asm,loading.scr)
+z88dk-boondog.tap: src/$(*:%.c,%.h) gfx/$(*:%.asm,loading.scr)
 	$(COMPOSE) $(COMPOSE_FLAGS) $(CC) $(CFLAGS) $(SDCC31) $(MAXFLAGS) "@zproject.lst" -pragma-include:zpragma.inc -o build/z88dk-breakout.bin
-	$(BAS2TAP) -a10 -sz88break src/loader.bas build/loader.tap
+	$(BAS2TAP) -a10 -sz88bndog src/loader.bas build/loader.tap
 	$(COMPOSE) $(COMPOSE_FLAGS) $(APPMAKE) +zx -b gfx/loading.scr -o build/loading.tap --blockname screen --org 16384 --noloader
-	$(COMPOSE) $(COMPOSE_FLAGS) $(APPMAKE) +zx -b build/z88dk-breakout.bin -o build/game.tap --blockname z88dk-breakout --org 25124 --noloader
-	$(CAT) build/loader.tap build/loading.tap build/game.tap > build/z88dk-breakout.tap
+	$(COMPOSE) $(COMPOSE_FLAGS) $(APPMAKE) +zx -b build/z88dk-boondog.bin -o build/game.tap --blockname z88dk-boondog --org 25124 --noloader
+	$(CAT) build/loader.tap build/loading.tap build/game.tap > build/z88dk-boondog.tap
 	$(RM) build/game.tap build/loading.tap build/loader.tap build/*.bin
 	$(MKDIR) maps
-	$(MV) build/z88dk-breakout.map maps/z88dk-breakout.map
+	$(MV) build/z88dk-boondog.map maps/z88dk-breakout.map
 
 .PHONY: clean $(GAME)
 
