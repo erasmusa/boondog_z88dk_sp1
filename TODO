@@ -4,3 +4,10 @@
     3. Run a command taht cp -r /opt/z88dk/* in container to /mnt/ in container to
 
 This will basically copy the z88dk toolchain from the container into the workspace
+
+>>>> DONE
+
+make z88dk-include will update the z88dk include files
+
+----------------------------------------------------------------------------------------------------
+

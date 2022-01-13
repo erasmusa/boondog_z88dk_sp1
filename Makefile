@@ -23,11 +23,18 @@
 #                                                                                                   #
 #####################################################################################################
 
+CONTAINER_NAME = z88dk
 MV = mv -u
 CAT = cat
+COPY_COMMAND = cp -r -u
 MKDIR = mkdir -p
-COMPOSE = docker-compose run
-COMPOSE_FLAGS = --rm z88dk
+MOUNT_DIR = /mnt
+Z88DK_INCLUDE_DIR = /opt/z88dk/include
+LOCAL_Z88DK_DIR = ${PWD}${Z88DK_INCLUDE_DIR}
+DOCKER = docker run --rm -ti
+VOLUME_FLAGS = -v ${LOCAL_Z88DK_DIR}:${MOUNT_DIR}
+COMPOSE = docker-compose run --rm
+COMPOSE_FLAGS = ${CONTAINER_NAME}
 BAS2TAP = utils/bas2tap
 CMD = sh -c
 CC = zcc
@@ -58,6 +65,11 @@ z88dk-boondog.tap: src/$(*:%.c,%.h) gfx/$(*:%.asm,loading.scr)
 	$(RM) build/game.tap build/loading.tap build/loader.tap build/*.bin
 	$(MKDIR) maps
 	$(MV) build/z88dk-boondog.map maps/z88dk-breakout.map
+
+# This recipe copies the latest z88dk include locally for DEV. Run everytime Z88DK updates.
+z88dk-include:
+	$(MKDIR) ${LOCAL_Z88DK_DIR}
+	$(DOCKER) ${VOLUME_FLAGS} ${CONTAINER_NAME} sh -c "${COPY_COMMAND} ${Z88DK_INCLUDE_DIR}/* ${MOUNT_DIR}"
 
 .PHONY: clean $(GAME)
 
