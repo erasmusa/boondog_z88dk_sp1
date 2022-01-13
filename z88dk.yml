@@ -1,7 +1,7 @@
 version: '3'
 
 volumes:
-    z88dk_source: {}
+    boondog_z88dk_source: {}
 
 services:
   z88dk:
@@ -11,6 +11,6 @@ services:
       context: .
       dockerfile: z88dk.Dockerfile
     volumes:
-      - .:/src
-      - z88dk_source:/opt/z88dk
+      - .:/src      
+      - boondog_z88dk_source:/opt/z88dk
     command: ["/bin/sh"]

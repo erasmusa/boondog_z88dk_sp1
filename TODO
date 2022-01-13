@@ -1,0 +1,6 @@
+1. Create a Makefile recipe that
+    1. Creates the local /opt/z88dk folder if it doesn't exist
+    2. Run a z88dk container that mounts this /opt/z88dk folder to /mnt/ in the container
+    3. Run a command taht cp -r /opt/z88dk/* in container to /mnt/ in container to
+
+This will basically copy the z88dk toolchain from the container into the workspace

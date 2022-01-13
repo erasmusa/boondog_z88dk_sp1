@@ -1,3 +1,5 @@
 /.vscode
 /boondog_windows
 /opt
+/temp
+*.swp
