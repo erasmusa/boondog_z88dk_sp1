@@ -1,7 +1,5 @@
 gfx/font.asm
-gfx/ball.asm
-gfx/pad.asm
-gfx/tile.asm
+gfx/tiles.asm
 src/int.c
 src/text_interface.c
 src/sprites.c
